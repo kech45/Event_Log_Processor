@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0441e38-917c-42b4-8e5e-79f59ddc04ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/eventlog/model/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/model/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/model/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/model/Event.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/parser/EventParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/parser/EventParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/reader/EventFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/reader/EventFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eventlog/resources/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/resources/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +43,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/validation",
+    "git-widget-placeholder": "feature/aggregation",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
