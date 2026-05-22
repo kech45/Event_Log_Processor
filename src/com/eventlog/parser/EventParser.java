@@ -1,8 +1,8 @@
-package main.java.com.eventlog.parser;
+package com.eventlog.parser;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import main.java.com.eventlog.model.Event;
+import com.eventlog.model.Event;
 
 import java.util.ArrayList;
 import java.util.List;

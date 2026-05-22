@@ -1,4 +1,4 @@
-package main.java.com.eventlog.reader;
+package com.eventlog.reader;
 
 import java.io.IOException;
 import java.nio.file.Files;

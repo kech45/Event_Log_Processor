@@ -1,7 +1,7 @@
-package main.java.com.eventlog;
+package com.eventlog;
 
-import main.java.com.eventlog.parser.EventParser;
-import main.java.com.eventlog.reader.EventFileReader;
+import com.eventlog.parser.EventParser;
+import com.eventlog.reader.EventFileReader;
 
 import java.io.IOException;
 import java.util.List;

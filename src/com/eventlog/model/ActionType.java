@@ -1,4 +1,4 @@
-package main.java.com.eventlog.model;
+package com.eventlog.model;
 
 public enum ActionType {
     LOGIN,
