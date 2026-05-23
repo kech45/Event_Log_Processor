@@ -4,16 +4,18 @@ public class Event {
     //Timestamps and UUIDs are used as Strings, because if Timestamp and UUID was used
     //the Jackson parser would not be able to count invalid UUIDs and Timestamps
 
-    private final String timestamp;
-    private final String eventId;
-    private final String userId;
-    private final String action;
+    private String timestamp;
+    private String eventId;
+    private String userId;
+    private String action;
 
     //Action specific fields, all nullable - amount as well, because it has a wrapper Double
 
-    private final String articleId;
-    private final String target;
-    private final Double amount;
+    private String articleId;
+    private String target;
+    private Double amount;
+
+    public Event() {}
 
     public Event(String timestamp, String eventId, String userId, String action,
                  String articleId, String target, Double amount) {

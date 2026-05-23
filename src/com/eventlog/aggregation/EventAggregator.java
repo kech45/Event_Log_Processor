@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
 public class EventAggregator {
     private List<Event> validEvents;
 
+    public EventAggregator(List<Event> validEvents) {
+        this.validEvents = validEvents;
+    }
+
+    private List<Event> validEvents;
+
     public int totalValidEvents() {
         return validEvents.size();
     }
@@ -89,4 +95,3 @@ public class EventAggregator {
     public List<Event> getValidEvents() {
         return validEvents;
     }
-}

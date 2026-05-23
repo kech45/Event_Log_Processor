@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f0441e38-917c-42b4-8e5e-79f59ddc04ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/resources/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/resources/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/validation/EventValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/validation/EventValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/aggregation/EventAggregator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
