@@ -8,6 +8,7 @@ import com.eventlog.validation.EventValidator;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,12 +23,25 @@ public class Main {
              List<Event> validEvents = validator.validate(parsed);
              EventAggregator aggregator = new EventAggregator(validEvents);
 
-             System.out.println(aggregator.eventCountPerUser());
-             System.out.println(aggregator.totalValidEvents());
-             System.out.println(aggregator.totalInvalidLines(parser.getInvalidJsonCount(), validator.getInvalidEventCount()));
-             System.out.println(aggregator.purchaseStatistics());
-             System.out.println(aggregator.eventCountPerAction());
-             System.out.println(aggregator.mostActiveTop3Users());
+             System.out.println("Total valid events: " + aggregator.totalValidEvents());
+             System.out.println("Total invalid lines: " +
+                     aggregator.totalInvalidLines(parser.getInvalidJsonCount(), validator.getInvalidEventCount()));
+
+             System.out.println("\nEvent count per user:");
+             aggregator.eventCountPerUser().forEach((k, v) -> System.out.println(k + ": " + v));
+
+             System.out.println("\nPurchase statistics:");
+             Map<String, Double> stats = aggregator.purchaseStatistics();
+             System.out.printf("Total purchase amount: %.2f%n", stats.get("Sum"));
+             System.out.printf("Average purchase amount: %.2f%n", stats.get("Average"));
+             System.out.printf("Largest purchase: %.2f%n", stats.get("Max"));
+
+             System.out.println("\nMost active user: " + aggregator.mostActiveUser());
+
+             System.out.println("\nTop 3 most active users:");
+
+             System.out.println("\nEvent count per action:");
+             aggregator.eventCountPerAction().forEach((k, v) -> System.out.println(k + ": " + v));
 
          } catch (IOException e) {
              System.out.println("Failed to read file!");
