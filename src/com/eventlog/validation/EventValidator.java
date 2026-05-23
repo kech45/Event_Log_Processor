@@ -20,6 +20,8 @@ public class EventValidator {
         this.strategies.put(ActionType.PURCHASE, new PurchaseValidator());
         this.strategies.put(ActionType.CLICK, new ClickValidator());
         this.strategies.put(ActionType.VIEW, new ViewValidator());
+        this.strategies.put(ActionType.LOGIN, new DefaultValidator());
+        this.strategies.put(ActionType.LOGOUT, new DefaultValidator());
     }
 
     public List<Event> validate(List<Event> events) {

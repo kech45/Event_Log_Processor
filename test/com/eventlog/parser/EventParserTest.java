@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EventParserTest {
     @Test
-    void InvalidJSONReturnsInvalidEvent() {
+    void invalidJSONReturnsInvalidEvent() {
         EventParser parser = new EventParser();
         List<String> lines = List.of("{Invalid}");
 
@@ -18,7 +18,7 @@ public class EventParserTest {
     }
 
     @Test
-    void ValidJSONReturnsValidEvent() {
+    void validJSONReturnsValidEvent() {
         EventParser parser = new EventParser();
         List<String> lines =
                 List.of("{\"timestamp\":\"2026-05-01T10:00:00Z\", \"eventId\":\"550e8400-e29b-41d4-a716-446655440000\", \"userId\":\"c1b7d8f0-1c3a-4d95-8d0d-6df3f1d5b001\", \"action\":\"login\"}");
