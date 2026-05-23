@@ -39,5 +39,4 @@ public class EventParser {
     public List<Event> getEvents() {
         return events;
     }
-
 }
