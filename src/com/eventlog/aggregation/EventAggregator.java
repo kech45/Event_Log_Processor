@@ -14,8 +14,6 @@ public class EventAggregator {
         this.validEvents = validEvents;
     }
 
-    private List<Event> validEvents;
-
     public int totalValidEvents() {
         return validEvents.size();
     }
@@ -47,8 +45,8 @@ public class EventAggregator {
             }
         }
 
-        if(purchaseCount != 0) {
-            avg = sum/purchaseCount;
+        if (purchaseCount != 0) {
+            avg = sum / purchaseCount;
         }
         res.put("Sum", sum);
         res.put("Max", max);
@@ -60,10 +58,10 @@ public class EventAggregator {
     public String mostActiveUser() {
         String mostActive = "";
         long max = 0;
-        Map<String ,Long> userEventCountMap = eventCountPerUser();
+        Map<String, Long> userEventCountMap = eventCountPerUser();
 
-        for(Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
-            if(user.getValue() > max) {
+        for (Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
+            if (user.getValue() > max) {
                 mostActive = user.getKey();
                 max = user.getValue();
             }
@@ -73,10 +71,10 @@ public class EventAggregator {
     }
 
     public List<Map.Entry<String, Long>> mostActiveTop3Users() {
-        Map<String ,Long> userEventCountMap = eventCountPerUser();
+        Map<String, Long> userEventCountMap = eventCountPerUser();
         List<Map.Entry<String, Long>> res = new ArrayList<>();
 
-        for(Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
+        for (Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
             res.add(user);
         }
 
@@ -95,3 +93,4 @@ public class EventAggregator {
     public List<Event> getValidEvents() {
         return validEvents;
     }
+}

@@ -3,14 +3,12 @@ package com.eventlog.model;
 public class Event {
     //Timestamps and UUIDs are used as Strings, because if Timestamp and UUID was used
     //the Jackson parser would not be able to count invalid UUIDs and Timestamps
-
     private String timestamp;
     private String eventId;
     private String userId;
     private String action;
 
     //Action specific fields, all nullable - amount as well, because it has a wrapper Double
-
     private String articleId;
     private String target;
     private Double amount;

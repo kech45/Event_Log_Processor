@@ -9,7 +9,6 @@ import java.util.UUID;
 
 
 public class BaseFieldValidator implements Validator {
-
     private boolean isNullOrBlank(String string) {
         return string == null || string.isBlank();
     }
