@@ -18,7 +18,7 @@ public class Main {
         EventValidator  validator = new EventValidator();
 
          try {
-             List<String> lines = reader.readLines("src/com/eventlog/resources/input.txt");
+             List<String> lines = reader.readLines("src/main/java/com/eventlog/resources/input.txt");
              List<Event> parsed = parser.parse(lines);
              List<Event> validEvents = validator.validate(parsed);
              EventAggregator aggregator = new EventAggregator(validEvents);
