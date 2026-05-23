@@ -106,12 +106,12 @@ Both counts can be summed during aggregation.
 
 ## Assumptions
 
-- *Purchase amount must be greater than zero.* A purchase of zero has no point, so `amount <= 0`
+- **Purchase amount must be greater than zero.** A purchase of zero has no point, so `amount <= 0`
 is treated as invalid.
-- *Blank lines are skipped* and not counted as invalid, as they are formatting artifacts
+- **Blank lines are skipped** and not counted as invalid, as they are formatting artifacts
 rather than malformed events.
-- *Unknown actions are invalid.* Any action not defined in `ActionType` is rejected.
-- *DefaultValidator is used both for Login and Logout* since there is no extra
+- **Unknown actions are invalid.** Any action not defined in `ActionType` is rejected.
+- **DefaultValidator is used both for Login and Logout** since there is no extra
 functionality listed for them in the requirements.
 
 
