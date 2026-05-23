@@ -13,39 +13,80 @@ public class EventAggregator {
     public int totalValidEvents() {
         return validEvents.size();
     }
+
     public int totalInvalidLines(int invalidJson, int invalidEvent) {
         return invalidJson + invalidEvent;
-    }
-
-    public List<Event> getValidEvents() {
-        return validEvents;
     }
 
     public Map<String, Long> eventCountPerUser() {
         return validEvents.stream().collect(Collectors.groupingBy(Event::getUserId, Collectors.counting()));
     }
 
-    public List<Double> purchaseStatistics() {
-        List<Double> res = new ArrayList<>();
-        double sum = validEvents.stream()
-                .filter(event -> event.getAction().toUpperCase().equals(ActionType.PURCHASE.name()))
-                .mapToDouble(Event::getAmount).sum();
+    public Map<String, Double> purchaseStatistics() {
+        double sum = 0;
+        double max = 0;
+        int purchaseCount = 0;
+        double avg = 0;
 
-        res.add(sum);
+        Map<String, Double> res = new HashMap<>();
 
-        double average = validEvents.stream()
-                .filter(event -> event.getAction().toUpperCase().equals(ActionType.PURCHASE.name()))
-                .mapToDouble(Event::getAmount).average().orElse(0.0);
+        for (Event event : validEvents) {
+            if (event.getAction().toUpperCase().equals(ActionType.PURCHASE.name())) {
+                sum += event.getAmount();
+                purchaseCount++;
 
-        res.add(average);
+                if (event.getAmount() > max) {
+                    max = event.getAmount();
+                }
+            }
+        }
 
-        double max = validEvents.stream()
-                .filter(event -> event.getAction().toUpperCase().equals(ActionType.PURCHASE.name()))
-                .mapToDouble(Event::getAmount).max().orElse(0.0);
-
-        res.add(max);
+        if(purchaseCount != 0) {
+            avg = sum/purchaseCount;
+        }
+        res.put("Sum", sum);
+        res.put("Max", max);
+        res.put("Average", avg);
 
         return res;
     }
 
+    public String mostActiveUser() {
+        String mostActive = "";
+        long max = 0;
+        Map<String ,Long> userEventCountMap = eventCountPerUser();
+
+        for(Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
+            if(user.getValue() > max) {
+                mostActive = user.getKey();
+                max = user.getValue();
+            }
+        }
+
+        return mostActive;
+    }
+
+    public List<Map.Entry<String, Long>> mostActiveTop3Users() {
+        Map<String ,Long> userEventCountMap = eventCountPerUser();
+        List<Map.Entry<String, Long>> res = new ArrayList<>();
+
+        for(Map.Entry<String, Long> user : userEventCountMap.entrySet()) {
+            res.add(user);
+        }
+
+        //Sort descending
+        Collections.sort(res, (a, b)
+                -> Long.compare(b.getValue(), a.getValue()));
+
+        //Excluding the element at 3rd index
+        return res.subList(0, Math.min(3, res.size()));
+    }
+
+    public Map<String, Long> eventCountPerAction() {
+        return validEvents.stream().collect(Collectors.groupingBy(Event::getAction, Collectors.counting()));
+    }
+
+    public List<Event> getValidEvents() {
+        return validEvents;
+    }
 }
