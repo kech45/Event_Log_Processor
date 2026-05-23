@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0441e38-917c-42b4-8e5e-79f59ddc04ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Event_Log_Processor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Event_Log_Processor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/eventlog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/eventlog/validation/EventValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/eventlog/validation/EventValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/eventlog/parser/EventParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/eventlog/parser/EventParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +36,9 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.EventAggregatorTest.executor": "Run",
     "JUnit.EventParserTest.executor": "Run",
+    "JUnit.EventValidatorTest.executor": "Run",
     "JUnit.test.java.com.eventlog.parser in Event_Log_Processor.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Repository.Attach.Annotations": "false",
@@ -49,7 +50,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "feature/testing",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/FinancialTimes_Project/Event_Log_Processor/test/src/Main.java",
     "project.structure.last.edited": "Libraries",
@@ -63,18 +64,52 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\FinancialTimes_Project\Event_Log_Processor" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.eventlog.validation" />
+      <recent name="com.eventlog.aggregation" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.EventParserTest">
+  <component name="RunManager" selected="JUnit.EventAggregatorTest">
+    <configuration name="EventAggregatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Event_Log_Processor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eventlog.aggregation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eventlog.aggregation" />
+      <option name="MAIN_CLASS_NAME" value="com.eventlog.aggregation.EventAggregatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Event_Log_Processor" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.eventlog.parser.*" />
+          <option name="PATTERN" value="com.eventlog.aggregation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.eventlog.parser" />
       <option name="MAIN_CLASS_NAME" value="com.eventlog.parser.EventParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Event_Log_Processor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eventlog.aggregation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eventlog.validation" />
+      <option name="MAIN_CLASS_NAME" value="com.eventlog.validation.EventValidatorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -96,6 +131,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventAggregatorTest" />
+        <item itemvalue="JUnit.EventValidatorTest" />
         <item itemvalue="JUnit.EventParserTest" />
         <item itemvalue="JUnit.test.java.com.eventlog.parser in Event_Log_Processor" />
       </list>
