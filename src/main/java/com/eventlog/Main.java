@@ -18,7 +18,13 @@ public class Main {
         EventValidator  validator = new EventValidator();
 
          try {
-             List<String> lines = reader.readLines("src/main/java/com/eventlog/resources/input.txt");
+             if(args.length == 0) {
+                 System.out.println("Enter file path!");
+                 return;
+             }
+
+             String filePath = args[0];
+             List<String> lines = reader.readLines(filePath);
              List<Event> parsed = parser.parse(lines);
              List<Event> validEvents = validator.validate(parsed);
              EventAggregator aggregator = new EventAggregator(validEvents);
@@ -39,12 +45,14 @@ public class Main {
              System.out.println("\nMost active user: " + aggregator.mostActiveUser());
 
              System.out.println("\nTop 3 most active users:");
+             aggregator.mostActiveTop3Users()
+                     .forEach(k -> System.out.println(k.getKey() + ": " + k.getValue().toString()));
 
              System.out.println("\nEvent count per action:");
              aggregator.eventCountPerAction().forEach((k, v) -> System.out.println(k + ": " + v));
 
          } catch (IOException e) {
-             System.out.println("Failed to read file!");
+             System.out.println("Failure during pipeline! " + e.getMessage());
          }
     }
 }

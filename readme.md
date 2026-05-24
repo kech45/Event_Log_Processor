@@ -21,7 +21,7 @@ produced from the valid events.
 ## How to Build and Run
 
 ### Build
-```bash
+```
 mvn package
 ```
 
@@ -33,11 +33,11 @@ code and also all of its dependencies, bundled together.
 
 ### Run
 ```
-java -jar target/Event_Log_Processor-1.0-SNAPSHOT.jar
+java -jar target/Event_Log_Processor-1.0-SNAPSHOT-jar-with-dependencies.jar <FilePATH>
 ```
 
-The application reads from `src/main/java/com/eventlog/resources/input.txt` by default.
-Replace the file contents with your own event log to process different data.
+The application accepts the input file path as a command line argument, for example:
+`src/main/java/com/eventlog/resources/input.txt`.
 
 
 ### Run Tests Only
@@ -55,7 +55,7 @@ src/
       model/           # Event, ActionType
       parser/          # JSON parsing
       reader/          # File reading
-      resources/       # Input file
+      resources/       # Input file location
       validation/      # Validation logic and strategies
       Main.java        # Entry point
    test/java/com/eventlog/
@@ -69,13 +69,29 @@ src/
 
 - `maven-compiler-plugin` - compiles the source code targeting Java 21;
 - `maven-surefire-plugin` - runs JUnit 5 tests when `mvn package` or `mvn test` are used;
-- `maven-shade-plugin` - bundles the application and all its dependencies (Jackson) into a single executable
+- `maven-assembly-plugin` - bundles the application and all its dependencies (Jackson) into a single executable
 fat JAR. Without this, running the JAR would fail for Jackson classes 
 
 
 ## Design Decisions
 
+### BufferedReader for Memory efficient File Reading
+
+The app uses a `BufferedReader` instead of `Files.readAllLines()` for memory efficiency,
+readAllLines reads the entire File at once, which is bad for large files. And it is better
+than `FileReader`, because `FileReader` reads files character by character -> Every read call
+goes to the disk and is extremely slow. Where `BufferedReader` shines is with its buffer, which by
+default is a fixed size of ~8192, this means that with one go to the disk we fill
+the buffer (which lives in memory) with up to 8192 characters (by default), and until it is empty,
+we can read each line incredibly fast, without the risk of reading a massive file at once.
+
+`try-with-resources` block is used, which automatically closes the file handle when the block exits,
+very useful with file reading, writing or any resource that needs to be closed, preventing leaks
+without manually needing to close the handle.
+
+
 ### Strings over typed fields in Event
+
 `eventId`, `userId`, and `timestamp` are stored as `String` rather than `UUID` and `Instant`.
 If typed Java classes were used, Jackson would throw a deserialization exception on invalid values
 before the validator could handle them gracefully. By keeping them as strings, invalid values can be caught
@@ -83,6 +99,7 @@ by the validator, then counted, and reported - which is what the spec requires.
 
 
 ### No polymorphism for Event subtypes
+
 A single 'Event' class is used with nullable action-specific fields (`articleId`, `target`, `amount`),
 paired with action types as Enumerable, rather than separate subclasses per action type.
 This was done because, The Jackson deserialization would have added significant
@@ -91,14 +108,16 @@ layer through the Strategy pattern.
 
 
 ### Strategy pattern for validation
+
 Action-specific validation (`PurchaseValidator`, `ClickValidator`, `ViewValidator`)
 is handled through an `Validator` interface with separate implementations per action type,
-registered in a `Map<ActionType, ActionValidator>`. This makes adding new event types
+registered in a `Map<ActionType, Validator>`. This makes adding new event types
 straightforward — a new validator class is added and registered, with no changes to
 existing code (Open/Closed Principle). 
 
 
 ### Invalid line tracking
+
 Invalid lines are tracked separately at two levels - the parser counts lines that fail JSON
 deserialization, and the validator counts events that fail business rule validation.
 Both counts can be summed during aggregation.
